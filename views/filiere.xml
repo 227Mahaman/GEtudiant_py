@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+
+    <record id="act_gestion_etudiant" model="ir.actions.act_window">
+        <field name="name">Etudiant</field>
+        <field name="res_model">etudiant</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="etudiant_view_form" model="ir.ui.view">
+        <field name="name">etudiant.form</field>
+        <field name="model">etudiant</field>
+        <field name="arch" type="xml">
+            <form string="Current Etudiant">
+                
+                <sheet>
+                
+                <div class="oe_title" name="title">
+                    <label for="matricule" class="oe_edit_only"/>
+                    <h1>
+                    <field name="matricule" />
+                
+                        
+                    </h1>
+                </div>
+                    
+                
+                <group>
+                    <group>
+                        <field name="prenom"/>
+                        <field name="adresse"/>
+                        <field name="telephone"/>
+                        <field name="datenais"/>
+                        <field name="idfiliere"/>
+                    </group>
+                    <group>                            
+                        <field name="name" placeholder=" Nom Etudiant"/>
+                        
+                        </group>
+                        
+                            
+                        
+                </group>
+                
+                </sheet>
+                
+            </form>
+        </field>
+    </record>
+
+    <record id="etudiant_view_search" model="ir.ui.view">
+        <field name="name">etudiant.search</field>
+        <field name="model">etudiant</field>
+        <field name="arch" type="xml">
+            <search string="Search Etudiant">
+                <field name="matricule"/>
+                <field name="name" string="Etudiant"/>
+                <field name="prenom"/>
+                <field name="datenais"/>
+                <field name="idfiliere"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="etudiant_view_tree" model="ir.ui.view">
+        <field name="name">etudiant.tree</field>
+        <field name="model">etudiant</field>
+        <field name="arch" type="xml">
+            <tree string="Etudiant" >
+                <field name="matricule"/>
+                <field name="name"/>
+                <field name="prenom"/>
+                <field name="adresse"/>
+                <field name="telephone"/>
+                <field name="datenais"/>
+                
+            </tree>
+        </field>
+    </record>
+
+
+<record id="act_hr_gestion_filiere" model="ir.actions.act_window">
+        <field name="name">Filiere</field>
+        <field name="res_model">filiere</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="filiere_view_form" model="ir.ui.view">
+        <field name="name">filiere.form</field>
+        <field name="model">filiere</field>
+        <field name="arch" type="xml">
+            <form string="form filiere">
+                <group col="4">
+                    <field colspan="4" name="code"/>
+                    <field colspan="4" name="name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="filiere_view_tree" model="ir.ui.view">
+        <field name="name">filiere.tree</field>
+        <field name="model">filiere</field>
+        <field name="arch" type="xml">
+            <tree string="liste filiere">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="filiere_view_search" model="ir.ui.view">
+        <field name="name">filiere.search</field>
+        <field name="model">filiere</field>
+        <field name="arch" type="xml">
+            <search string="Recherche Filiere">
+                <field name="code" string="Code de la filiere"/>
+                <field name="name" string="Nom de la filiere"/>
+            </search>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_gestion_ibam"
+        name="Gestion Ibam"
+        action="act_hr_gestion_filiere"
+        sequence="5"
+        groups="base.group_user"/>
+    <menuitem
+        id="hr_menu_filiere"
+        name="Filiere"
+        parent="menu_gestion_ibam"
+        action="act_hr_gestion_filiere"
+        sequence="6"
+        groups="base.group_user"/>
+    <menuitem
+        id="hr_menu_etudiant"
+        name="Etudiant"
+        parent="menu_gestion_ibam"
+        action="act_gestion_etudiant"
+        sequence="6"
+        groups="base.group_user"/>
+</odoo>
